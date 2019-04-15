@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title layout:title-pattern="$CONTENT_TITLE  $DECORATOR_TITLE"> :: Falgun</title>
+    <link rel="icon" th:href="@{asset/images/batman2.jpg}" type="image/icon type">
+
+
+    <div th:replace="commonfragment/common :: gcss"></div>
+    <div th:replace="commonfragment/common :: gscripts"></div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="commonfragment/common :: gnavbar"></div>
+    <div class="row">
+
+        <div class="col-md-4 sidenav">
+            <div th:replace="commonfragment/common :: gleftbar"></div>
+        </div>
+
+        <div class="col-md-8">
+            <div layout:fragment="content">
+                <!--Page content goes here-->
+            </div>
+        </div>
+
+    </div>
+    <!-- FOOTER -->
+    <div th:replace="commonfragment/common :: gfooter"></div>
+</div>
+
+</body>
+
+</html>
+
