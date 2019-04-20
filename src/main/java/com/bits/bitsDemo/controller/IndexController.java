@@ -10,17 +10,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    // it will hit custom firstindex.html page
-    @GetMapping("/")
-    public String getIndex() {
+//    @GetMapping("/")
+//    public String getIndex() {
+//        return "view/firstindex";
+//    }
+//
+//    @GetMapping("/login")
+//    public String loginDemo() {
+//
+//        return "login/login";
+//    }
+//
+//    @GetMapping("/registration")
+//    public String userRegistrationDemo() {
+//
+//        return "login/userregistration";
+//    }
+//
+//    // it will hit custom firstindex.html page
+//    @GetMapping("/admin/home")
+//    public String getIndexHome() {
+//        return "view/firstindex";
+//    }
 
-        return "view/firstindex";
+    @GetMapping("/logout")
+    public String logoutDemo() {
+
+        return "login/logout";
     }
 
-//    // it will hit custom home.html page (carousol theme)
-//    @GetMapping("/")
-//    public String showHome() {
-//        return "view/home";
-//    }
+    @GetMapping("/access-denied")
+    public String accessDeniedDemo() {
+
+        return "login/accessdenied";
+    }
+
+
 }
 
