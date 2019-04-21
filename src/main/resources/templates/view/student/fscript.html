@@ -18,6 +18,7 @@
         /* hit controller to create (insert) data in DB */
         function saveStudentFn() {
             var formData = $("#studentform").serialize();
+            $("#loading").css("display", "block");
 
             $.ajax({
                 type: "post",
@@ -26,6 +27,7 @@
                 dataType: "json",
                 success: function (data) {
                     swal("Welcome ", data.message);
+                    $("#loading").css("display", "none");
                 }
             });
 
@@ -33,7 +35,7 @@
 
         /* hit controller to fetch data from database and display in table */
         function listStudentFn() {
-
+            $("#loading").css("display", "block");
             $.ajax({
                 type: "get",
                 url: "/admin/listStudent",
@@ -53,6 +55,7 @@
                                 '</tr>');
                         $('table> tbody').append($row);
                     });
+                    $("#loading").css("display", "none");
                 }
             });
         }
