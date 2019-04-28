@@ -1,9 +1,15 @@
 <div xmlns:th="http://www.w3.org/1999/xhtml">
 
-    <div class="" th:fragment="gnavbar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="sticky-top" style="background-color: lightblue;" th:fragment="gnavbar">
+        <!--this also works fine here-->
+        <!--<img th:src="@{/asset/images/45.gif}" class="overlay" id="customloader"/>  -->
 
-            <a class="navbar-brand" href="#">Navbar</a>
+        <!--<div id="loading" style="" class="">-->
+            <!--<img th:src="@{/asset/images/103.gif}" width="100%" height="4"/>-->
+        <!--</div>-->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light topnavbar ">
+            <a class="navbar-brand" href="#">Rebel </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,39 +17,59 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                        <a class="nav-link dropdown-toggle dropbtn" href="#" id="menuHoverDropDown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Menu
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/student">Student</a>
-                            <a class="dropdown-item" href="/studentRestShow">Student Rest</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                            <a class="" href="/admin/student">Student</a>
+                            <a class="" href="/admin/studentRestShow">Student Rest</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropbtn" href="#" id="menuHoverDropDown2" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Departments
+                        </a>
+                        <div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                            <a class="nav-link" href="#">Department1 </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="nav-link" href="#">Department2 </a>
+                        </div>
                     </li>
+
+                    <!--<li class="nav-item">-->
+                    <!--<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Peoples </a>-->
+                    <!--</li>-->
+
                 </ul>
+
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    <p>&nbsp<a href="/logout"> Logout</a></p>
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="" th:src="@{/asset/images/logout.png}" width="15" height="15" alt=" ">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/registration">Registration</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+
                 </form>
+
+
             </div>
         </nav>
-        <!--loader image-->
-        <div id="loading" style="display:none; color: mediumblue" class="">
-            <img th:src="@{/asset/images/103.gif}" width="100%" height="4"/>
-            <br></div>
 
     </div>
 
@@ -58,30 +84,46 @@
         <script type="text/javascript" th:src="@{/asset/scripts/bootstrap.min.js}"></script>
     </div>
 
-    <div class="" th:fragment="gfooter">
-        <footer class="container">
-            <p class="float-right"><a href="/">Home</a></p>
-            <p>&copy; 2018-2019 Aman &middot; <a href="#">Privacy</a> &middot; <a href="#"></a></p>
+    <div class="" th:fragment="gfooter"
+         style="width: 80%; position: fixed; bottom: 0; height: 3%; background-color: #f2f2f2">
+        <footer class="">
+            <!--<p class="float-right"><a href="/admin/home">Home</a></p>-->
+            <p align="center">&nbsp&nbsp Copyright ©2019 AMAN &middot; All rights reserved. <a
+                    href="/admin/home">Home</a><a href="#"></a></p>
         </footer>
     </div>
 
 
-    <div class="" th:fragment="gleftbar">
-        <a href="/admin/student">Student</a><br>
-        <a href="/admin/studentRestShow">Student Rest</a><br>
-        <a href="/logindemo">login</a><br>
-        <a href="/userRegistration">Registration</a><br>
-        <a href="#">Contact</a><br>
-        <a href="#">Contact</a><br>
-        <a href="#">Contact</a><br>
-        <a href="#">Contact</a><br>
+    <!--<div class="" th:fragment="gleftbar">-->
+    <!--<a href="/admin/student">Student</a><br>-->
+    <!--<a href="/admin/studentRestShow">Student Rest</a><br>-->
+    <!--<a href="https://github.com/">Github</a><br>-->
+    <!--<a href="https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d">Spring Security</a><br>-->
+    <!--<a href="https://www.youtube.com/">Youtube</a><br>-->
+    <!--<a href="https://www.prothomalo.com/">Prothom alo</a><br>-->
+    <!--<a href="https://erecruitment.bb.org.bd/career/jobopportunity_bscs.php">BB</a><br>-->
+    <!--<a href="http://subeen.com/tag/%E0%A6%A1%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%9C/">DB</a><br>-->
+    <!--<a href="https://mdbootstrap.com/docs/jquery/forms/inputs/">Dootstrap Forms</a><br>-->
+    <!--</div>-->
+
+    <div class="dropdown" th:fragment="gleftbar">
+        <button class="dropbtn">Links</button>
+        <div class="dropdown-content">
+            <a class="dropdown-item" href="/admin/student">Student</a>
+            <a class="dropdown-item" href="/admin/studentRestShow">Student Rest</a>
+            <a class="dropdown-item" href="https://github.com/">Github</a>
+            <a class="dropdown-item"
+               href="https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d">Spring
+                Security</a>
+            <a class="dropdown-item" href="https://www.youtube.com/">Youtube</a>
+            <a class="dropdown-item" href="https://www.prothomalo.com/">Prothom alo</a>
+            <a class="dropdown-item" href="https://erecruitment.bb.org.bd/career/jobopportunity_bscs.php">BB</a>
+            <a class="dropdown-item"
+               href="http://subeen.com/tag/%E0%A6%A1%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%9C/">DB</a>
+            <a class="dropdown-item" href="https://mdbootstrap.com/docs/jquery/forms/inputs/">Dootstrap Forms</a>
+        </div>
     </div>
 
-    <!--<div class="" th:fragment="gloader">-->
-    <!--<div id="wait" style="display:none;width:69px;height:89px;border:0px solid black;position:absolute;top:50%;left:50%;padding:2px;">-->
-    <!--<img src='asset/images/3.gif' width="64" height="64" />-->
-    <!--<br>Loading..</div>-->
-    <!--</div>-->
 
 </div>
 

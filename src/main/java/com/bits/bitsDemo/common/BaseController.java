@@ -27,6 +27,9 @@ public class BaseController {
     protected String renderOutput(ActionInterface action, Map<String, Object> params) {
         String output = "";
         Map result = this.getServiceResponse(action, params);
+        if ( result == null ){
+            return "{}";
+        }
         try {
             output = mapperObj.writeValueAsString(result);
         } catch (IOException e) {
