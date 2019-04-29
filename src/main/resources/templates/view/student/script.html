@@ -1,33 +1,22 @@
 <div class="container" th:fragment="firstscript" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <script type="text/javascript">
+        var loaderId = "#customloader";
+        var formId = "#customloader";
+        var outerdivId = "#outerdiv";
+
         $(document).ready(function () {
 //            $("#loading").css('visibility', 'hidden'); // Hide element
-            $("#customloader").css('visibility', 'hidden'); // Hide element
+            $(loaderId).css('visibility', 'hidden'); // Hide element
+//            listStudentFn();
+            $('#example').DataTable();
+
         });
 
-        /* hit controller to create (insert) data in DB */
-        function saveStudentFn() {
-            var formData = $("#studentform").serialize();
-            startLoader();
-
-            $.ajax({
-                type: "post",
-                url: "/admin/saveStudent",
-                data: formData,
-                dataType: "json",
-                success: function (data) {
-                    swal("Welcome ", data.message);
-
-                    stopLoader();
-                }
-            });
-
-        }
 
         /* hit controller to fetch data from database and display in table */
         function listStudentFn() {
-            startLoader();
+            startLoader(loaderId, formId, outerdivId);
             $.ajax({
                 type: "get",
                 url: "/admin/listStudent",
@@ -39,7 +28,7 @@
                     var dataObj = data.queryList;
                     tableDataLoad(dataObj);
 
-                    stopLoader();
+                    stopLoader(loaderId, formId, outerdivId);
                 }
             });
 
@@ -62,18 +51,6 @@
                         '</tr>');
                 $('table> tbody').append($row);
             });
-        }
-
-        function startLoader() {
-            $("#outerdiv").css({ opacity: 0.5 });
-            $("#customloader").css('visibility', 'visible'); // Hide element
-            $("#studentform :input").prop("disabled", true);
-        }
-
-        function stopLoader() {
-            $("#outerdiv").css({ opacity: 1 });
-            $("#studentform :input").prop("disabled", false);
-            $("#customloader").css('visibility', 'hidden'); // Show element
         }
 
 
