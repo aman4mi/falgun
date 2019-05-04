@@ -5,6 +5,7 @@ import com.bits.bitsDemo.services.action.studentinfo.CreateStudentInfoActionServ
 import com.bits.bitsDemo.services.action.studentinfo.ListStudentInfoActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -27,19 +28,20 @@ public class StudentController extends BaseController {
 
 
     @GetMapping("/admin/student")
-    public String showStudent()
-    {
+    public String showStudent(Model model) {
+        model.addAttribute("userName", super.sessionValue());
         return "view/student/show";
     }
 
     @GetMapping("/admin/createStudent")
-    public String createStudent()
-    {
+    public String createStudent(Model model) {
+        model.addAttribute("userName", super.sessionValue());
         return "view/student/create/show";
     }
 
     @GetMapping("/admin/studentRestShow")
     public String studentRestShow() {
+
         return "view/studentrest/show"; // this is to rest UI
     }
 

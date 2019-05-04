@@ -1,7 +1,11 @@
 package com.bits.bitsDemo.common;
 
+import com.bits.bitsDemo.entity.User;
+import com.bits.bitsDemo.services.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,6 +23,9 @@ public class BaseController {
     @Autowired
     private ObjectMapper mapperObj;
 
+    @Autowired
+    private UserService userService;
+
     protected BaseController() {
 
     }
@@ -27,7 +34,7 @@ public class BaseController {
     protected String renderOutput(ActionInterface action, Map<String, Object> params) {
         String output = "";
         Map result = this.getServiceResponse(action, params);
-        if ( result == null ){
+        if (result == null) {
             return "{}";
         }
         try {
@@ -62,6 +69,14 @@ public class BaseController {
         }
 
         return action.buildSuccessResult(postResult);
+    }
+
+
+    protected String sessionValue() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        String getRole = String.valueOf(auth.getAuthorities());
+        return "Welcome " + user.getName() + " " + " (" + user.getEmail() + ")" + getRole;
     }
 
 }
